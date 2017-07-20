@@ -13,7 +13,7 @@ gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0.6'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -65,7 +65,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'simple_form'
 gem 'nested_form'
 gem 'jquery-rails'
-gem 'less-rails' # Railsでlessを使えるようにする。Bootstrapがlessで書かれているため
+gem 'less-rails', git: 'https://github.com/MustafaZain/less-rails' # Railsでlessを使えるようにする。Bootstrapがlessで書かれているため
 gem 'bootstrap-sass'
 gem 'twitter-bootstrap-rails'
 gem 'kaminari'
