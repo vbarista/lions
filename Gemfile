@@ -56,6 +56,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # ADD FOR AUTHORITY
 gem 'devise'
 gem 'cancancan'
+gem 'rails_admin'
 
 # ADD FOR MODEL
 gem 'default_value_for'
