@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      event: イベント
+    attributes:
+      event:
+        id: ID
+        title: タイトル
+        datetime: 日時
+        contents: 内容
