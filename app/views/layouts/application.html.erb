@@ -20,7 +20,7 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
             <li>
-              <%=link_to content_tag('span', 'イベント一覧', class: "btn btn-primary"), events_path if user_signed_in? %>
+              <%=link_to content_tag('span', 'イベント一覧', class: "btn btn-primary"), events_path %>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right root_links">
@@ -32,10 +32,6 @@
             <% if user_signed_in? %>
             <li>
               <%=link_to content_tag('span', 'ログアウト', class: "btn btn-primary"), destroy_user_session_path, method: :delete %>
-            <% else %>
-            <li>
-              <%=link_to content_tag('span', 'ログイン', class: "btn btn-primary"), new_user_session_path %>
-            </li>
             <% end %>
           </ul>
         </div>
