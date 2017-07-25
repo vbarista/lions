@@ -12,7 +12,7 @@
 <h1>イベント一覧</h1>
 
 <br />
-<%= link_to 'イベントを新規作成', new_event_path %>
+<%= link_to 'イベントを新規作成', new_event_path, class: "btn btn-primary btn-lg" %>
 
 <% @events.each do |event| %>
 <hr />
@@ -24,7 +24,7 @@
     </tr>
     <tr>
       <th>日時&nbsp;</th>
-      <td><%= event.datetime %></td>
+      <td><%= event.datetime.strftime('%Y年%m月%d日 %H:%M') %></td>
     </tr>
     <tr>
       <th>内容&nbsp;</th>
