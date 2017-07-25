@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users
+  
+  # deviceのsessionsコントローラーをカスタマイズ
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
+
   resources :events
   root to: 'home#index'
   get 'home/index'
