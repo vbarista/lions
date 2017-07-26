@@ -1,19 +1,16 @@
 <%= simple_form_for(@event) do |f| %>
   <%= f.error_notification %>
 
-
   <div class="form-group">
-    <label for="title">タイトル</label>
     <div class="form-group">
-      <%= f.text_field :title, { required: false, autofocus: true, class: "form-control input-lg" } %>
+      <%= f.input :title, label: "タイトル", error: "必須項目です。",required: false, autofocus: true, input_html: { style: 'border-radius:5px;', class: "form-control input-lg" } %>
     </div>
     <label for="datetime">日付</label>
     <div class="form-group form-inline">
-      <%= f.datetime_select :datetime, {}, class: 'form-control input-lg' %>
+      <%= f.input :datetime, label: false, input_html: { class: "form-control input-lg" } %>
     </div>
-    <label for="contents">内容</label>
     <div class="form-group">
-      <%= f.text_area :contents, { required: false, autofocus: true, class: "form-control input-lg", rows: 20 } %>
+      <%= f.input :contents, as: :text, label: "内容", input_html: { class: "form-control input-lg", rows: 20 } %>
     </div>
   </div>
 
