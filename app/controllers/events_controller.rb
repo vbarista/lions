@@ -1,8 +1,9 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :update_confirmation]
   # ユーザがログインしていないとアクセスできない
   before_action :authenticate_user!
+  # 参加可否の受付画面
+  before_action :set_confirmation, only: [:show, :update_confirmation]
   
   # GET /events
   # GET /events.json
@@ -64,15 +65,51 @@ class EventsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  # PUT /confirmation/1
+  def update_confirmation
+    respond_to do |format|
+      if @confirmation.update(confirmation_params)
+        format.html { render :show }
+        format.json { render json: @confirmation.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
-      @event = Event.find(params[:id])
+      @event ||= Event.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.require(:event).permit(:title, :datetime, :contents)
+    end
+    
+    def set_confirmation
+      @confirmation ||= @event.confirmations.find_or_create_by(user: current_user)
+    end
+    
+    def confirmation_params
+      params.require(:confirmation)
+            .permit(:onoff,
+                    :reason_for_off,
+                    :guest1_company,
+                    :guest1_position,
+                    :guest1_name,
+                    :guest2_company,
+                    :guest2_position,
+                    :guest2_name,
+                    :guest3_company,
+                    :guest3_position,
+                    :guest3_name,
+                    :guest4_company,
+                    :guest4_position,
+                    :guest4_name,
+                    :guest5_company,
+                    :guest5_position,
+                    :guest5_name,
+                  )
     end
 end

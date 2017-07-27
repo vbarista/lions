@@ -15,5 +15,48 @@
   <%= simple_format(@event.contents) %>
 </p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%= form_tag(update_confirmation_event_path(@confirmation), method: :put) do %>
+  <div class="form-group">
+    <label class="btn btn-default" id="confirmation_on">参　加<%= radio_button :confirmation, :onoff, 1, { style: "visibility:hidden", checked: (@confirmation.onoff == 1) } %></label>
+    <label class="btn btn-default" id="confirmation_off">不参加<%= radio_button :confirmation, :onoff, 2, { style: "visibility:hidden", checked: (@confirmation.onoff == 2) } %></label>
+  </div>
+  <script>
+    $(function(){
+      // チェック済み「参加・不参加」ボタンの色を変更
+      $("[name='confirmation[onoff]']:checked").parent().removeClass('btn-default').addClass('btn-warning');
+      // 参加・不参加のボタンがクリックされた時の挙動
+      $("[name='confirmation[onoff]']").on("change", function() {
+        $("[name='confirmation[onoff]']").parent().removeClass('btn-warning').addClass('btn-default');
+        $("[name='confirmation[onoff]']:checked").parent().removeClass('btn-default').addClass('btn-warning');
+      });
+    });
+  </script>
+  <div class="form-group">
+    <%= text_field_tag "confirmation[reason_for_off]", @confirmation.reason_for_off %>
+  </div>
+  <div class="form-group">
+    <%= text_field_tag "confirmation[guest1_company]", @confirmation.guest1_company %>
+    <%= text_field_tag "confirmation[guest1_position]", @confirmation.guest1_position %>
+    <%= text_field_tag "confirmation[guest1_name]", @confirmation.guest1_name %>
+  </div>
+  <div class="form-group">
+    <%= text_field_tag "confirmation[guest2_company]", @confirmation.guest2_company %>
+    <%= text_field_tag "confirmation[guest2_position]", @confirmation.guest2_position %>
+    <%= text_field_tag "confirmation[guest2_name]", @confirmation.guest2_name %>
+  </div>
+  <div class="form-group">
+    <%= text_field_tag "confirmation[guest3_company]", @confirmation.guest3_company %>
+    <%= text_field_tag "confirmation[guest3_position]", @confirmation.guest3_position %>
+    <%= text_field_tag "confirmation[guest3_name]", @confirmation.guest3_name %>
+  </div>
+  <div class="form-group">
+    <%= text_field_tag "confirmation[guest4_company]", @confirmation.guest4_company %>
+    <%= text_field_tag "confirmation[guest4_position]", @confirmation.guest4_position %>
+    <%= text_field_tag "confirmation[guest4_name]", @confirmation.guest4_name %>
+  </div>
+  <div class="form-group">
+    <%= text_field_tag "confirmation[guest5_company]", @confirmation.guest5_company %>
+    <%= text_field_tag "confirmation[guest5_position]", @confirmation.guest5_position %>
+    <%= text_field_tag "confirmation[guest5_name]", @confirmation.guest5_name %>
+  </div>
+<% end %>

@@ -6,7 +6,12 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
-  resources :events
+  resources :events do
+    member do
+      put 'update_confirmation'
+    end
+  end
+
   root to: 'events#index'
   get 'home/index'
 
