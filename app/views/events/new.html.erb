@@ -1,5 +1,10 @@
-<h1>New Event</h1>
-
-<%= render 'form', event: @event %>
-
 <%= link_to '一覧画面へ戻る', events_path %>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3>イベントの登録</h3>
+  </div>
+  <div class="panel-body">
+<%= render 'form', event: @event %>
+  </div>
+</div>
