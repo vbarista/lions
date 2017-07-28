@@ -19,7 +19,7 @@ body {
   margin: 0;
   background:#fff url(common/lion_bg.jpg) no-repeat center center;
   background-size:cover;
-  font-size: 24px;
+  font-size: 28px;
 }
 
 .container {
@@ -33,7 +33,7 @@ body {
 // HOMEボタン
 .navbar-brand {
   height: 80px;
-  font-size: 28px;
+  font-size: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,24 +41,24 @@ body {
 
 .navbar-nav {
   height: 80px;
-  font-size: 20px;
+  font-size: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .main > .container {
-  margin-top: 80px;
+  margin-top: 95px;
   height:100%;
 }
 
 .btn {
-  font-size: 24px;
+  font-size: 28px;
 }
 
 #notice {
   color: orangered;
-  font-size: 34px;
+  font-size: 38px;
 }
 
 .error_notification, .error {
