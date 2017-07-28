@@ -9,44 +9,52 @@
   }
 </style>
 
-
 <div class="panel panel-default">
   <div class="panel-body">
-    <%= link_to 'イベントを新規作成', new_event_path, class: "btn btn-primary btn-lg" %>
+    <%= link_to 'イベントを新規作成', new_event_path, class: "btn btn-success btn-lg btn-block" %>
   </div>
 </div>
 
-
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h2>イベント一覧</h2>
-  </div>
-  <div class="panel-body">
 <% @events.each do |event| %>
-<% if edit_user? %>
-<%= link_to '編集', edit_event_path(event), class: "btn btn-success" %>&nbsp;
-<%= link_to '削除', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning" %>
-<% end %>
-<table class="table table-bordered table-responsive">
-  <tbody>
-    <tr>
-      <th>イベント&nbsp;</th>
-      <td><%= link_to event.title, event %></td>
-    </tr>
-    <tr>
-      <th>日時&nbsp;</th>
-      <td><%= event.datetime.strftime('%Y年%m月%d日 %H:%M') %></td>
-    </tr>
-    <tr>
-      <th>内容&nbsp;</th>
-      <td><%= simple_format(event.contents) %></td>
-    </tr>
-  </tbody>
-</table>
-<% end %>
-  </div>
-</div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3><%= link_to event.title, event %></h3>
+    </div>
+    <div class="panel-body">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <b>日時</b>
+        </div>
+        <div class="panel-body">
+          <%= event.datetime.strftime('%Y年%m月%d日 %H:%M') %>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <b>内容</b>
+        </div>
+        <div class="panel-body">
+          <%= simple_format(event.contents) %>
+        </div>
+      </div>
+      <% if edit_user? %>
+      <div class="panel panel-default">
+        <div class="panel-body">
 
+          <div class="form-group form-inline">
+            <div class="form-group col-xs-6">
+              <%= link_to '編集', edit_event_path(event), class: "btn btn-default btn-block" %>
+            </div>
+            <div class="form-group col-xs-6">
+              <%= link_to '削除', event, method: :delete, data: { confirm: '削除してよろしいですか?' }, class: "btn btn-default btn-block" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
 
 <div class="list-group text-center">
   <a href="#" class="list-group-item toThePageTop">
