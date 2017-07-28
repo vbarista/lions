@@ -74,9 +74,9 @@ class EventsController < ApplicationController
   def update_confirmation
     respond_to do |format|
       if @confirmation.update(confirmation_params)
-        format.html { redirect_to edit_confirmation_event_path(@event), notice: '保存しました。' }
+        format.html { redirect_to edit_confirmation_event_path(@event), notice: '登録しました。' }
       else
-        format.html { render :edit_confirmation, notice: '保存エラー' }
+        format.html { render :edit_confirmation, notice: '登録エラー' }
       end
     end
   end
