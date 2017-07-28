@@ -33,8 +33,8 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: '作成完了' }
-        format.json { render :show, status: :created, location: @event }
+        format.html { redirect_to events_path, notice: '作成完了' }
+        format.json { render :index, status: :created, location: @event }
       else
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
