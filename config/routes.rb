@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :events do
     member do
+      get 'edit_confirmation'
       put 'update_confirmation'
     end
   end

@@ -1,9 +1,9 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :update_confirmation]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :edit_confirmation, :update_confirmation]
   # ユーザがログインしていないとアクセスできない
   before_action :authenticate_user!
   # 参加可否の受付画面
-  before_action :set_confirmation, only: [:show, :update_confirmation]
+  before_action :set_confirmation, only: [:show, :edit_confirmation, :update_confirmation]
   
   # GET /events
   # GET /events.json
@@ -66,13 +66,17 @@ class EventsController < ApplicationController
     end
   end
   
+  # GET /confirmation/1
+  def edit_confirmation
+  end
+
   # PUT /confirmation/1
   def update_confirmation
     respond_to do |format|
       if @confirmation.update(confirmation_params)
-        format.html { redirect_to @event, notice: '保存しました。' }
+        format.html { redirect_to edit_confirmation_event_path(@event), notice: '保存しました。' }
       else
-        format.html { render :show, notice: '保存エラー' }
+        format.html { render :edit_confirmation, notice: '保存エラー' }
       end
     end
   end

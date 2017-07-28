@@ -18,7 +18,7 @@
 <% @events.each do |event| %>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3><%= link_to event.title, event %></h3>
+      <h3><%= link_to event.title, edit_confirmation_event_path(event) %></h3>
     </div>
     <div class="panel-body">
       <div class="panel panel-default">
