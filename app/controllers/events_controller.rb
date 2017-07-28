@@ -70,8 +70,9 @@ class EventsController < ApplicationController
   def update_confirmation
     respond_to do |format|
       if @confirmation.update(confirmation_params)
-        format.html { render :show }
-        format.json { render json: @confirmation.errors, status: :unprocessable_entity }
+        format.html { redirect_to @event, notice: '保存しました。' }
+      else
+        format.html { render :show, notice: '保存エラー' }
       end
     end
   end
