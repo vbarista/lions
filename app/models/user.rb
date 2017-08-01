@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
        
   attr_accessor :login
+  
+  has_many :events
 end
