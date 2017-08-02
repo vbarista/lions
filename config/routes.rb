@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :groups
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
   # deviceのsessionsコントローラーをカスタマイズ
@@ -17,5 +16,7 @@ Rails.application.routes.draw do
   root to: 'events#index'
   get 'home/index'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :groups do
+    resources :affiliations, controller: "groups/affiliations"
+  end
 end

@@ -20,7 +20,7 @@
 <% @groups.each do |group| %>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3><%= link_to "#{Group::types[group.type] + "　" + group.name}" %></h3>
+      <h3><%= link_to "#{Group::types[group.type] + "　" + group.name}", group_affiliations_path(group.becomes(Group)) %></h3>
     </div>
     <div class="panel-body">
       <div class="panel panel-default">
