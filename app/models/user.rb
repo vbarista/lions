@@ -7,4 +7,6 @@ class User < ApplicationRecord
   attr_accessor :login
   
   has_many :events
+  has_many :affiliations
+  has_many :groups, through: :affiliations
 end
