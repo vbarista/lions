@@ -26,7 +26,7 @@
           <ul class="nav navbar-nav navbar-right root_links">
             <% if admin_user? %>
             <li>
-              <%=link_to content_tag('span', '管理', class: "btn btn-success"), rails_admin_path %>
+              <%=link_to content_tag('span', '委員管理', class: "btn btn-success"), groups_path %>
             </li>
             <% end %>
             <% if user_signed_in? %>
