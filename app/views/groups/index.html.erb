@@ -14,11 +14,11 @@
   <tbody>
     <% @groups.each do |group| %>
       <tr>
-        <td><%= group.type %></td>
+        <td><%= Group.types[group.type] %></td>
         <td><%= group.name %></td>
-        <td><%= link_to 'Show', group %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', group.becomes(Group) %></td>
+        <td><%= link_to 'Edit', edit_group_path(group.becomes(Group)) %></td>
+        <td><%= link_to 'Destroy', group.becomes(Group), method: :delete, data: { confirm: '削除してよろしいですか?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Group', new_group_path %>
+<%= link_to '委員を作成', new_group_path %>
