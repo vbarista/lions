@@ -1,29 +1,55 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Groups</h1>
+<style type="text/css">
+  table th {
+    white-space: nowrap;
+    font-size: 24px;
+  }
+  table td a {
+    white-space: nowrap;
+    font-size: 32px;
+  }
+</style>
 
-<table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= link_to '委員を新規作成', new_group_path, class: "btn btn-success btn-lg btn-block" %>
+  </div>
+</div>
 
-  <tbody>
-    <% @groups.each do |group| %>
-      <tr>
-        <td><%= Group.types[group.type] %></td>
-        <td><%= group.name %></td>
-        <td><%= link_to 'Show', group.becomes(Group) %></td>
-        <td><%= link_to 'Edit', edit_group_path(group.becomes(Group)) %></td>
-        <td><%= link_to 'Destroy', group.becomes(Group), method: :delete, data: { confirm: '削除してよろしいですか?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @groups.each do |group| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3><%= link_to "#{Group::types[group.type] + "　" + group.name}" %></h3>
+    </div>
+    <div class="panel-body">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <b>委員</b>
+        </div>
+        <div class="panel-body">
+          <%= group.name %>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
 
-<br>
+          <div class="form-group form-inline">
+            <div class="form-group col-xs-6">
+              <%= link_to '編集', edit_group_path(group.becomes(Group)), class: "btn btn-default btn-block btn-success" %>
+            </div>
+            <div class="form-group col-xs-6">
+              <%= link_to '削除', group.becomes(Group), method: :delete, data: { confirm: '削除してよろしいですか?' }, class: "btn btn-danger btn-block" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
 
-<%= link_to '委員を作成', new_group_path %>
+<div class="list-group text-center">
+  <a href="#" class="list-group-item toThePageTop">
+    <span>▲</span>
+  </a>
+</div>
