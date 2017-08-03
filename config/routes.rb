@@ -16,9 +16,5 @@ Rails.application.routes.draw do
   root to: 'events#index'
   get 'home/index'
 
-  resources :groups do
-    member do
-      patch 'commit_user_to_affiliation'
-    end
-  end
+  resources :groups
 end

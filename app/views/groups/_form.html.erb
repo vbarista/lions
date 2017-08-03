@@ -1,30 +1,41 @@
-<%= simple_form_for(@group.becomes(Group)) do |f| %>
+<%= simple_form_for(group.becomes(Group)) do |f| %>
   <%= f.error_notification %>
 
-  <div class="panel panel-primary">
-    <div class="panel-heading">委員種別</div>
+  <div class="panel panel-default">
     <div class="panel-body">
-      <div class="form-group">
-        <%= f.select :type, Group.types.invert, { prompt: '選択してください' }, class: 'form-control btn input-lg' %>
+      <div class="panel panel-primary">
+        <div class="panel-body">
+          <div class="form-group">
+            <%= f.select :type, Group.types.invert, { prompt: '委員の種別を選択します。' }, class: 'form-control btn input-lg' %>
+          </div>
+          <div class="form-group">
+            <%= f.input :name, label: false, error: '必須項目です。', required: true, autofocus: true, input_html: { class: "form-control input-lg" } %>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div class="panel panel-primary">
-    <div class="panel-heading">委員名称</div>
-    <div class="panel-body">
-      <div class="form-group">
-        <%= f.input :name, label: false, error: '必須項目です。', required: true, autofocus: true, input_html: { class: "form-control input-lg" } %>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          所属メンバー
+        </div>
+        <div class="panel-body">
+          <div class="check_box" >
+            <%= f.collection_check_boxes(:user_ids, User.all, :id, :username) do |b| %>
+              <%= b.label { b.check_box + b.text } %>
+            <% end %>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div class="btn-group inline-block col-xs-12 col-sm-12 col-md-12">
-    <div class="form-group col-xs-6 col-sm-6 col-md-6">
-      <%= link_to '一覧へ戻る', groups_path, class: 'btn btn-warning btn-block' %>
-    </div>
-    <div class="form-group col-xs-6 col-sm-6 col-md-6">
-        <%= f.button :submit, class: 'btn btn-success btn-block' %>
+      <div class="btn-group inline-block col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group col-xs-6 col-sm-6 col-md-6">
+            <%= f.button :submit, class: 'btn btn-success btn-block' %>
+        </div>
+        <div class="form-group col-xs-6">
+          <%= link_to '削除', group.becomes(Group), method: :delete, data: { confirm: '削除してよろしいですか?' }, class: "btn btn-danger btn-block" %>
+        </div>
+      </div>
+
     </div>
   </div>
 

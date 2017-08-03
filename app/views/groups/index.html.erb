@@ -1,4 +1,10 @@
-<p id="notice"><%= notice %></p>
+<% if notice.present? %>
+  <div class="panel panel-notice">
+    <div class="panel-body">
+      <%= notice %>
+    </div>
+  </div>
+<% end %>
 
 <style type="text/css">
   table th {
@@ -18,34 +24,7 @@
 </div>
 
 <% @groups.each do |group| %>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3><%= link_to "#{Group::types[group.type].to_s + "　" + group.name}", group_path(group.becomes(Group)) %></h3>
-    </div>
-    <div class="panel-body">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <b>委員</b>
-        </div>
-        <div class="panel-body">
-          <%= group.name %>
-        </div>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-body">
-
-          <div class="form-group form-inline">
-            <div class="form-group col-xs-6">
-              <%= link_to '編集', edit_group_path(group.becomes(Group)), class: "btn btn-default btn-block btn-success" %>
-            </div>
-            <div class="form-group col-xs-6">
-              <%= link_to '削除', group.becomes(Group), method: :delete, data: { confirm: '削除してよろしいですか?' }, class: "btn btn-danger btn-block" %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render 'form', group: group.becomes(Group) %>
 <% end %>
 
 <div class="list-group text-center">
