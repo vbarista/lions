@@ -15,9 +15,7 @@
       </div>
 
       <div class="panel panel-primary">
-        <div class="panel-heading">
-          所属メンバー
-        </div>
+        <div class="panel-heading">所属メンバー</div>
         <div class="panel-body">
           <div class="btn-group">
             <%= f.collection_check_boxes(:user_ids, User.all, :id, :username) do |b| %>
@@ -29,7 +27,7 @@
 
       <div class="btn-group inline-block col-xs-12 col-sm-12 col-md-12">
         <div class="form-group col-xs-6 col-sm-6 col-md-6">
-            <%= f.button :submit, class: 'btn btn-success btn-block' %>
+          <%= f.button :submit, class: 'btn btn-success btn-block' %>
         </div>
         <div class="form-group col-xs-6">
           <%= link_to '削除', group.becomes(Group), method: :delete, data: { confirm: '削除してよろしいですか?' }, class: "btn btn-danger btn-block" %>

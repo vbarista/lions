@@ -1,9 +1,9 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :edit_confirmation, :update_confirmation]
+  before_action :set_event, only: [:update, :destroy, :edit_confirmation]
   # ユーザがログインしていないとアクセスできない
   before_action :authenticate_user!
   # 参加可否の受付画面
-  before_action :set_confirmation, only: [:show, :edit_confirmation, :update_confirmation]
+  before_action :set_confirmation, only: [:edit_confirmation]
   
   # GET /events
   # GET /events.json
@@ -11,24 +11,14 @@ class EventsController < ApplicationController
     @events = Event.all
   end
 
-  # GET /events/1
-  # GET /events/1.json
-  def show
-  end
-
   # GET /events/new
   def new
     @event = Event.new
   end
 
-  # GET /events/1/edit
-  def edit
-  end
-
   # POST /events
   # POST /events.json
   def create
-    
     @event = Event.new(event_params)
     @event.user = current_user
 
@@ -65,10 +55,6 @@ class EventsController < ApplicationController
       format.html { redirect_to events_url, notice: '削除しました。' }
       format.json { head :no_content }
     end
-  end
-  
-  # GET /confirmation/1
-  def edit_confirmation
   end
 
   # PUT /confirmation/1

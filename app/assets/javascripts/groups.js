@@ -3,9 +3,9 @@ $( function() {
     var checkbox = $(this);
     var label = checkbox.parent('label');
     if (checkbox.prop('checked') === true)  {
-        label.addClass('btn-primary').addClass('active');
+        label.addClass('btn-warning').addClass('active');
     } else {
-        label.removeClass('btn-primary').removeClass('active');
+        label.removeClass('btn-warning').removeClass('active');
     }
   };
   $('.btn-group').on('change', 'input:checkbox', fn);
