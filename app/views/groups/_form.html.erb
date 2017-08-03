@@ -19,9 +19,9 @@
           所属メンバー
         </div>
         <div class="panel-body">
-          <div class="check_box" >
+          <div class="btn-group">
             <%= f.collection_check_boxes(:user_ids, User.all, :id, :username) do |b| %>
-              <%= b.label { b.check_box + b.text } %>
+              <%= b.label(class:'btn btn-default') { b.check_box(class: 'hidden') + b.text } %>
             <% end %>
           </div>
         </div>
