@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
   # 管理者のみアクセス可
   before_action :admin_user!
-  before_action :set_group, only: [:show, :edit, :update, :destroy, :commit_user_to_affiliation]
+  before_action :set_group, only: [:show, :update, :destroy, :commit_user_to_affiliation]
 
   # GET /groups
   # GET /groups.json
@@ -21,7 +21,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to groups_path, notice: '正常に登録完了しました。' }
+        format.html { redirect_to groups_path, notice: '正常に登録が完了しました。' }
       else
         format.html { render :new }
       end
@@ -33,7 +33,7 @@ class GroupsController < ApplicationController
   def update
     respond_to do |format|
       if @group.update(group_params)
-        format.html { redirect_to groups_path, notice: '正常に更新完了しました。' }
+        format.html { redirect_to groups_path, notice: '正常に更新が完了しました。' }
       else
         format.html { render :edit }
       end
@@ -45,18 +45,15 @@ class GroupsController < ApplicationController
   def destroy
     @group.destroy
     respond_to do |format|
-      format.html { redirect_to groups_url, notice: '正常に削除完了しました。' }
-      format.json { head :no_content }
+      format.html { redirect_to groups_url, notice: '正常に削除が完了しました。' }
     end
   end
   
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_group
       @group = Group.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
       params.require(:group).permit(:type, :name, user_ids: [])
     end

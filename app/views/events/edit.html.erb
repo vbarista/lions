@@ -1,3 +1,10 @@
-<h1>イベント修正</h1>
+<div class="form-group">
+  <%= link_to '一覧画面へ戻る', events_path, class: "btn btn-success btn-lg" %>
+</div>
+<div class="panel panel-primary">
+  <div class="panel-heading">イベント修正</div>
+  <div class="panel-body">
+    <%= render 'form', event: @event %>
+  </div>
+</div>
 
-<%= render 'form', event: @event %>
