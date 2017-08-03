@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get 'home/index'
 
   resources :groups do
-    resources :affiliations, controller: "groups/affiliations"
+    member do
+      patch 'commit_user_to_affiliation'
+    end
   end
 end

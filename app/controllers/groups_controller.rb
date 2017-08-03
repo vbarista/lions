@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
   # 管理者のみアクセス可
   before_action :admin_user!
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: [:show, :edit, :update, :destroy, :commit_user_to_affiliation]
 
   # GET /groups
   # GET /groups.json
@@ -62,6 +62,20 @@ class GroupsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  # PATCH /commit_user_to_affiliation
+  # 委員会とユーザーを紐付ける
+  def commit_user_to_affiliation
+    @group. update_attributes(affiliations_params)
+
+    respond_to do |format|
+      if @group.save
+        format.html { redirect_to group_path(@group.becomes(Group)), notice: 'Affiliation was successfully updated.' }
+      else
+        format.html { redirect_to group_path(@group.becomes(Group)), notice: 'Error.' }
+      end
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -76,5 +90,9 @@ class GroupsController < ApplicationController
     
     def admin_user!
       raise CanCan::AccessDenied unless current_user.try(:admin_flg?)
+    end
+
+    def affiliations_params
+      params.require(:group).permit(user_ids: [])
     end
 end
