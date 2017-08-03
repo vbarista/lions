@@ -5,8 +5,10 @@
     <div class="panel-body">
       <div class="panel panel-primary">
         <div class="panel-body">
-          <div class="form-group">
-            <%= f.select :type, Group.types.invert, { prompt: '委員の種別を選択します。' }, class: 'form-control btn input-lg' %>
+          <div data-toggle="buttons-radio">
+            <%= f.collection_radio_buttons :type, Group.types, :first, :last do |b| %>
+              <%= b.label(class:'btn radio_label') { b.radio_button(class: 'hidden') + b.text } %>
+            <% end %>
           </div>
           <div class="form-group">
             <%= f.input :name, label: false, error: '必須項目です。', required: true, autofocus: true, input_html: { class: "form-control input-lg" } %>
@@ -17,9 +19,9 @@
       <div class="panel panel-primary">
         <div class="panel-heading">所属メンバー</div>
         <div class="panel-body">
-          <div class="btn-group">
+          <div class="btn-group" data-toggle="buttons-radio">
             <%= f.collection_check_boxes(:user_ids, User.all, :id, :username) do |b| %>
-              <%= b.label(class:'btn btn-default') { b.check_box(class: 'hidden') + b.text } %>
+              <%= b.label(class:'btn checkbox_label') { b.check_box(class: 'hidden') + b.text } %>
             <% end %>
           </div>
         </div>

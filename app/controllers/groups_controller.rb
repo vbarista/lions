@@ -4,7 +4,6 @@ class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :update, :destroy, :commit_user_to_affiliation]
 
   # GET /groups
-  # GET /groups.json
   def index
     @groups = Group.all
   end
@@ -15,7 +14,6 @@ class GroupsController < ApplicationController
   end
 
   # POST /groups
-  # POST /groups.json
   def create
     @group = Group.new(group_params)
 
@@ -29,7 +27,6 @@ class GroupsController < ApplicationController
   end
 
   # PATCH/PUT /groups/1
-  # PATCH/PUT /groups/1.json
   def update
     respond_to do |format|
       if @group.update(group_params)
@@ -41,7 +38,6 @@ class GroupsController < ApplicationController
   end
 
   # DELETE /groups/1
-  # DELETE /groups/1.json
   def destroy
     @group.destroy
     respond_to do |format|
