@@ -1,9 +1,9 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:edit, :update, :destroy, :edit_confirmation]
+  before_action :set_event, only: [:edit, :update, :destroy, :edit_confirmation, :update_confirmation]
   # ユーザがログインしていないとアクセスできない
   before_action :authenticate_user!
   # 参加可否の受付画面
-  before_action :set_confirmation, only: [:edit_confirmation]
+  before_action :set_confirmation, only: [:edit_confirmation, :update_confirmation]
   
   # GET /events
   def index
