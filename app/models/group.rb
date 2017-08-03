@@ -1,9 +1,9 @@
 # 委員会
 class Group < ApplicationRecord
-  has_many :affiliations
+  has_many :affiliations, dependent: :destroy
   has_many :users, through: :affiliations
 
-  accepts_nested_attributes_for :affiliations, allow_destroy: false
+  accepts_nested_attributes_for :affiliations, allow_destroy: true
 
   enum type: {
     'Groups::Operation' => '運営委員会',
