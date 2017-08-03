@@ -1,0 +1,63 @@
+<style type="text/css">
+  table th {
+    white-space: nowrap;
+    font-size: 24px;
+  }
+  table td a {
+    white-space: nowrap;
+    font-size: 32px;
+  }
+</style>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= link_to 'イベントを新規作成', new_event_path, class: "btn btn-success btn-lg btn-block" %>
+  </div>
+</div>
+
+<% @events.each do |event| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3><%= link_to event.title, edit_confirmation_event_path(event) %></h3>
+    </div>
+    <div class="panel-body">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <b>日時</b>
+        </div>
+        <div class="panel-body">
+          <%= event.datetime.strftime('%Y年%m月%d日 %H:%M') %>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <b>内容</b>
+        </div>
+        <div class="panel-body">
+          <%= simple_format(event.contents) %>
+        </div>
+      </div>
+      <% if event_edit?(event) %>
+      <div class="panel panel-default">
+        <div class="panel-body">
+
+          <div class="form-group form-inline">
+            <div class="form-group col-xs-6">
+              <%= link_to '編集', edit_event_path(event), class: "btn btn-default btn-block" %>
+            </div>
+            <div class="form-group col-xs-6">
+              <%= link_to '削除', event, method: :delete, data: { confirm: '削除してよろしいですか?' }, class: "btn btn-default btn-block" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<div class="list-group text-center">
+  <a href="#" class="list-group-item toThePageTop">
+    <span>▲</span>
+  </a>
+</div>
