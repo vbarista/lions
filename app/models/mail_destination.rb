@@ -1,0 +1,2 @@
+class MailDestination < ApplicationRecord
+end
