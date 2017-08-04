@@ -19,7 +19,6 @@
       <div class="panel panel-primary">
         <div class="panel-heading">タイトル</div>
         <div class="panel-body">
-
           <%= link_to event.title, edit_confirmation_event_path(event) %>
         </div>
       </div>
@@ -37,6 +36,18 @@
         </div>
         <div class="panel-body">
           <%= simple_format(event.contents) %>
+        </div>
+      </div>
+      <div class="panel panel-primary">
+        <div class="panel-heading">メール送付先</div>
+        <div class="panel-body">
+          <div class="btn-group" data-toggle="buttons-radio">
+            <% event.groups.each do |group| %>
+              <span class="btn">
+                <%= group.name.to_s %>
+              </span>
+            <% end %>
+          </div>
         </div>
       </div>
       <% if event_edit?(event) %>

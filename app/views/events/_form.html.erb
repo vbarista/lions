@@ -15,7 +15,7 @@
   </div>
 
   <div class="panel panel-primary">
-    <div class="panel-heading">送付先</div>
+    <div class="panel-heading">メール送付先</div>
     <div class="panel-body">
       <div class="btn-group" data-toggle="buttons-radio">
         <%= f.collection_check_boxes(:group_ids, Group.all, :id, :name) do |b| %>
@@ -24,7 +24,6 @@
       </div>
     </div>
   </div>
-
 
   <div class="form-group">
     <%= f.button :submit, "保　存", class: "btn btn-success btn-lg btn-block" %>
