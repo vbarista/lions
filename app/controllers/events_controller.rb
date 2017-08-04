@@ -35,6 +35,7 @@ class EventsController < ApplicationController
 
   # PATCH/PUT /events/1
   def update
+    binding.pry
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to events_path, notice: '正常に更新が完了しました。' }
@@ -69,7 +70,7 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit(:title, :datetime, :contents)
+      params.require(:event).permit(:title, :datetime, :contents, group_ids: [])
     end
     
     def set_confirmation
