@@ -39,19 +39,29 @@
           </div>
           <script>
             $(function(){
+              // 不参加理由の表示制御
+              var fn_check_going = function() {
+                if ($("[name='confirmation[onoff]']:checked").val() === "1") {
+                  $("#reason_for_not_going").hide("slow");
+                } else {
+                  $("#reason_for_not_going").show("slow");
+                }
+              };
+
               // チェック済み「参加・不参加」ボタンの色を変更
               $("[name='confirmation[onoff]']:checked").parent().removeClass('btn-default').addClass('btn-danger');
               // 参加・不参加のボタンがクリックされた時の挙動
               $("[name='confirmation[onoff]']").on("change", function() {
                 $("[name='confirmation[onoff]']").parent().removeClass('btn-danger').addClass('btn-default');
                 $("[name='confirmation[onoff]']:checked").parent().removeClass('btn-default').addClass('btn-danger');
+                fn_check_going();
               });
+              
+              fn_check_going();
             });
           </script>
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              不参加の理由
-            </div>
+          <div id="reason_for_not_going" class="panel panel-danger">
+            <div class="panel-heading">不参加の理由</div>
             <div class="panel-body">
               <div class="form-group">
                 <%= text_area_tag "confirmation[reason_for_off]", @confirmation.reason_for_off, rows: 6, class: "form-control input-lg" %>
