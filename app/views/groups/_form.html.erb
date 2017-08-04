@@ -7,7 +7,7 @@
         <div class="panel-body">
           <div data-toggle="buttons-radio">
             <%= f.collection_radio_buttons :type, Group.types, :first, :last do |b| %>
-              <%= b.label(class:'btn radio_label') { b.radio_button(class: 'hidden') + b.text } %>
+              <%= b.label(class:'btn btn-default radio_label') { b.radio_button(class: 'hidden') + b.text } %>
             <% end %>
           </div>
           <div class="form-group">
@@ -21,7 +21,7 @@
         <div class="panel-body">
           <div class="btn-group" data-toggle="buttons-radio">
             <%= f.collection_check_boxes(:user_ids, User.all, :id, :username) do |b| %>
-              <%= b.label(class:'btn checkbox_label') { b.check_box(class: 'hidden') + b.text } %>
+              <%= b.label(class:'btn btn-default checkbox_label') { b.check_box(class: 'hidden') + b.text } %>
             <% end %>
           </div>
         </div>
