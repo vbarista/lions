@@ -20,108 +20,106 @@
         <%= simple_format(@event.contents) %>
       </div>
     </div>
+
+    <%= form_tag(update_confirmation_event_path(@event), method: :put) do %>
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          参加・不参加
+        </div>
+        <div class="panel-body">
+          <div class="panel">
+            <div class="panel-body">
+              <div class="form-group col-md-6">
+                <label class="btn btn-default btn-block" id="confirmation_on">◯　参　加<%= radio_button :confirmation, :onoff, 1, { style: "visibility:hidden", checked: (@confirmation.onoff == 1) } %></label>
+              </div>
+              <div class="form-group col-md-6">
+                <label class="btn btn-default btn-block col-md-6" id="confirmation_off">X　不参加<%= radio_button :confirmation, :onoff, 2, { style: "visibility:hidden", checked: (@confirmation.onoff == 2) } %></label>
+              </div>
+            </div>
+          </div>
+          <script>
+            $(function(){
+              // チェック済み「参加・不参加」ボタンの色を変更
+              $("[name='confirmation[onoff]']:checked").parent().removeClass('btn-default').addClass('btn-danger');
+              // 参加・不参加のボタンがクリックされた時の挙動
+              $("[name='confirmation[onoff]']").on("change", function() {
+                $("[name='confirmation[onoff]']").parent().removeClass('btn-danger').addClass('btn-default');
+                $("[name='confirmation[onoff]']:checked").parent().removeClass('btn-default').addClass('btn-danger');
+              });
+            });
+          </script>
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              不参加の理由
+            </div>
+            <div class="panel-body">
+              <div class="form-group">
+                <%= text_area_tag "confirmation[reason_for_off]", @confirmation.reason_for_off, rows: 6, class: "form-control input-lg" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          ゲスト１
+        </div>
+        <div class="panel-body">
+          <div class="form-group col-md-4 col-sm-12 col-xs-12">
+            <label>会社名</label>
+            <%= text_field_tag "confirmation[guest1_company]",  @confirmation.guest1_company, class: "form-control input-lg" %>
+          </div>
+          <div class="form-group col-md-4 col-sm-12 col-xs-12">
+            <label>役職名</label>
+            <%= text_field_tag "confirmation[guest1_position]", @confirmation.guest1_position, class: "form-control input-lg" %>
+          </div>
+          <div class="form-group col-md-4 col-sm-12 col-xs-12">
+            <label>ご芳名</label>
+            <%= text_field_tag "confirmation[guest1_name]",     @confirmation.guest1_name, class: "form-control input-lg" %>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          ゲスト２
+        </div>
+        <div class="panel-body">
+          <div class="form-group col-md-4 col-sm-12 col-xs-12">
+            <label>会社名</label>
+            <%= text_field_tag "confirmation[guest2_company]",  @confirmation.guest2_company, class: "form-control input-lg" %>
+          </div>
+          <div class="form-group col-md-4 col-sm-12 col-xs-12">
+            <label>役職名</label>
+            <%= text_field_tag "confirmation[guest2_position]", @confirmation.guest2_position, class: "form-control input-lg" %>
+          </div>
+          <div class="form-group col-md-4 col-sm-12 col-xs-12">
+            <label>ご芳名</label>
+            <%= text_field_tag "confirmation[guest2_name]",     @confirmation.guest2_name, class: "form-control input-lg" %>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          ゲスト３
+        </div>
+        <div class="panel-body">
+          <div class="form-group col-md-4 col-sm-12 col-xs-12">
+            <label>会社名</label>
+            <%= text_field_tag "confirmation[guest3_company]",  @confirmation.guest3_company, class: "form-control input-lg" %>
+          </div>
+          <div class="form-group col-md-4 col-sm-12 col-xs-12">
+            <label>役職名</label>
+            <%= text_field_tag "confirmation[guest3_position]", @confirmation.guest3_position, class: "form-control input-lg" %>
+          </div>
+          <div class="form-group col-md-4 col-sm-12 col-xs-12">
+            <label>ご芳名</label>
+            <%= text_field_tag "confirmation[guest3_name]",     @confirmation.guest3_name, class: "form-control input-lg" %>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= button_tag "確　定", data: { confirm: '確定しますか？' }, type: :submit, class: "btn btn-success btn-lg btn-block" %>
+      </div>
+    <% end %>
   </div>
 </div>
-
-<%= form_tag(update_confirmation_event_path(@event), method: :put) do %>
-  <div class="panel panel-danger">
-    <div class="panel-heading">
-      参加・不参加
-    </div>
-    <div class="panel-body">
-      <div class="form-group form-inline">
-        <div class="form-group col-xs-6">
-          <label class="btn btn-default btn-block" id="confirmation_on">◯　参　加<%= radio_button :confirmation, :onoff, 1, { style: "visibility:hidden", checked: (@confirmation.onoff == 1) } %></label>
-        </div>
-        <div class="form-group col-xs-6">
-          <label class="btn btn-default btn-block col-md-6" id="confirmation_off">X　不参加<%= radio_button :confirmation, :onoff, 2, { style: "visibility:hidden", checked: (@confirmation.onoff == 2) } %></label>
-        </div>
-      </div>
-      <script>
-        $(function(){
-          // チェック済み「参加・不参加」ボタンの色を変更
-          $("[name='confirmation[onoff]']:checked").parent().removeClass('btn-default').addClass('btn-danger');
-          // 参加・不参加のボタンがクリックされた時の挙動
-          $("[name='confirmation[onoff]']").on("change", function() {
-            $("[name='confirmation[onoff]']").parent().removeClass('btn-danger').addClass('btn-default');
-            $("[name='confirmation[onoff]']:checked").parent().removeClass('btn-default').addClass('btn-danger');
-          });
-        });
-      </script>
-    </div>
-  </div>
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      不参加の理由
-    </div>
-    <div class="panel-body">
-      <div class="form-group">
-        <%= text_area_tag "confirmation[reason_for_off]", @confirmation.reason_for_off, rows: 6, class: "form-control input-lg" %>
-      </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= button_tag "登　録", data: { confirm: '登録しますか？' }, type: :submit, class: "btn btn-success btn-lg btn-block" %>
-  </div>
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      ゲスト１
-    </div>
-    <div class="panel-body">
-      <div class="form-group col-md-4 col-sm-12 col-xs-12">
-        <label>会社名</label>
-        <%= text_field_tag "confirmation[guest1_company]",  @confirmation.guest1_company, class: "form-control input-lg" %>
-      </div>
-      <div class="form-group col-md-4 col-sm-12 col-xs-12">
-        <label>役職名</label>
-        <%= text_field_tag "confirmation[guest1_position]", @confirmation.guest1_position, class: "form-control input-lg" %>
-      </div>
-      <div class="form-group col-md-4 col-sm-12 col-xs-12">
-        <label>ご芳名</label>
-        <%= text_field_tag "confirmation[guest1_name]",     @confirmation.guest1_name, class: "form-control input-lg" %>
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      ゲスト２
-    </div>
-    <div class="panel-body">
-      <div class="form-group col-md-4 col-sm-12 col-xs-12">
-        <label>会社名</label>
-        <%= text_field_tag "confirmation[guest2_company]",  @confirmation.guest2_company, class: "form-control input-lg" %>
-      </div>
-      <div class="form-group col-md-4 col-sm-12 col-xs-12">
-        <label>役職名</label>
-        <%= text_field_tag "confirmation[guest2_position]", @confirmation.guest2_position, class: "form-control input-lg" %>
-      </div>
-      <div class="form-group col-md-4 col-sm-12 col-xs-12">
-        <label>ご芳名</label>
-        <%= text_field_tag "confirmation[guest2_name]",     @confirmation.guest2_name, class: "form-control input-lg" %>
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      ゲスト３
-    </div>
-    <div class="panel-body">
-      <div class="form-group col-md-4 col-sm-12 col-xs-12">
-        <label>会社名</label>
-        <%= text_field_tag "confirmation[guest3_company]",  @confirmation.guest3_company, class: "form-control input-lg" %>
-      </div>
-      <div class="form-group col-md-4 col-sm-12 col-xs-12">
-        <label>役職名</label>
-        <%= text_field_tag "confirmation[guest3_position]", @confirmation.guest3_position, class: "form-control input-lg" %>
-      </div>
-      <div class="form-group col-md-4 col-sm-12 col-xs-12">
-        <label>ご芳名</label>
-        <%= text_field_tag "confirmation[guest3_name]",     @confirmation.guest3_name, class: "form-control input-lg" %>
-      </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= button_tag "登　録", data: { confirm: '登録しますか？' }, type: :submit, class: "btn btn-success btn-lg btn-block" %>
-  </div>
-<% end %>
-
