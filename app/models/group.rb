@@ -2,6 +2,9 @@
 class Group < ApplicationRecord
   has_many :affiliations, dependent: :destroy
   has_many :users, through: :affiliations
+  
+  has_many :mail_destinations, dependent: :destroy
+  has_many :events, through: :mail_destinations
 
   accepts_nested_attributes_for :affiliations, allow_destroy: true
 
