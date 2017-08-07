@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   
   # GET /events
   def index
-    @events = Event.all
+    @events = Event.order('created_at DESC').all
   end
 
   # GET /events/new
