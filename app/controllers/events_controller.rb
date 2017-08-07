@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   
   # GET /events
   def index
-    @events = Event.order('created_at DESC').all
+    @events = Event.where(["datetime > ?", (DateTime.now - 1)]).order('created_at DESC').all
   end
 
   # GET /events/new
