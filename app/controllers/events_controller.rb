@@ -35,6 +35,7 @@ class EventsController < ApplicationController
 
   # PATCH/PUT /events/1
   def update
+    EventNotificationMailer.send2groups("k-fujiki@future-n.co.jp").deliver_later
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to events_path, notice: '正常に更新が完了しました。' }
