@@ -1,9 +1,13 @@
 XXXXクラブ（テストメール）
+<%
+  youbi = %w[（日） （月） （火） （水） （木） （金） （土）]
+  event_datetime = @event.datetime
+%>
 
 <%= @event.title %>
 
 日時
-<%= @event.datetime.to_s %>
+<%= event_datetime.strftime("%Y年%m月%d日") + youbi[event_datetime.wday] + event_datetime.strftime(" %H時%M分") %>
 
 <%= @event.contents.to_s %>
 
