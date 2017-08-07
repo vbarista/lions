@@ -65,7 +65,7 @@ class EventsController < ApplicationController
   
   # イベントメール送信
   def send_eventmail
-    EventNotificationMailer.send2groups("k-fujiki@future-n.co.jp").deliver_later
+    EventNotificationMailer.send2groups(@event).deliver_later
     @event.transmitted_flag = true
     respond_to do |format|
       if @event.save
