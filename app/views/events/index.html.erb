@@ -50,6 +50,18 @@
           </div>
         </div>
       </div>
+      <div class="panel panel-primary">
+        <div class="panel-heading">参加者</div>
+        <div class="panel-body">
+          <div class="btn-group" data-toggle="buttons-radio">
+            <% join_users(event).each do |user_name| %>
+              <span class="btn">
+                <%= user_name.to_s %>
+              </span>
+            <% end %>
+          </div>
+        </div>
+      </div>
       <% if event_edit?(event) %>
         <div class="form-group col-xs-10">
           <%= link_to '編集', edit_event_path(event), data: { confirm: '編集画面に遷移してよろしいですか？' }, class: "btn btn-warning btn-block" %>
