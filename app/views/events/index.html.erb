@@ -51,10 +51,34 @@
         </div>
       </div>
       <div class="panel panel-primary">
-        <div class="panel-heading">参加者</div>
+        <div class="panel-heading">参加</div>
         <div class="panel-body">
           <div class="btn-group" data-toggle="buttons-radio">
             <% join_users(event).each do |user_name| %>
+              <span class="btn">
+                <%= user_name.to_s %>
+              </span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-primary">
+        <div class="panel-heading">不参加</div>
+        <div class="panel-body">
+          <div class="btn-group" data-toggle="buttons-radio">
+            <% not_join_users(event).each do |user_name| %>
+              <span class="btn">
+                <%= user_name.to_s %>
+              </span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-primary">
+        <div class="panel-heading">未回答</div>
+        <div class="panel-body">
+          <div class="btn-group" data-toggle="buttons-radio">
+            <% no_sign_users(event).each do |user_name| %>
               <span class="btn">
                 <%= user_name.to_s %>
               </span>
