@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:edit, :update, :destroy, :edit_confirmation, :update_confirmation]
+  before_action :set_event, only: [:edit, :update, :destroy, :edit_confirmation, :update_confirmation, :send_eventmail]
   # ユーザがログインしていないとアクセスできない
   before_action :authenticate_user!
   # 参加可否の受付画面
@@ -35,7 +35,6 @@ class EventsController < ApplicationController
 
   # PATCH/PUT /events/1
   def update
-    EventNotificationMailer.send2groups("k-fujiki@future-n.co.jp").deliver_later
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to events_path, notice: '正常に更新が完了しました。' }
@@ -61,6 +60,14 @@ class EventsController < ApplicationController
       else
         format.html { render :edit_confirmation, notice: '登録エラー' }
       end
+    end
+  end
+  
+  # イベントメール送信
+  def send_eventmail
+    EventNotificationMailer.send2groups("k-fujiki@future-n.co.jp").deliver_later
+    respond_to do |format|
+      format.html { redirect_to events_path, notice: 'メールを送信しました。' }
     end
   end
 

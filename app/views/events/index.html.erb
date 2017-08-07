@@ -57,6 +57,9 @@
         <div class="form-group col-xs-6">
           <%= link_to '削除', event, method: :delete, data: { confirm: '削除してよろしいですか?' }, class: "btn btn-danger btn-block" %>
         </div>
+        <div class="form-group col-xs-12">
+          <%= link_to 'メール送信', send_eventmail_event_path(event), method: :put, data: { confirm: 'イベントメールを送信します。' }, class: "btn btn-success btn-block" %>
+        </div>
       <% end %>
     </div>
   </div>

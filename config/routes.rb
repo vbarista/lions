@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     member do
       get 'edit_confirmation'
       put 'update_confirmation'
+      put 'send_eventmail'
     end
   end
 
