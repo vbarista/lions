@@ -66,8 +66,13 @@ class EventsController < ApplicationController
   # イベントメール送信
   def send_eventmail
     EventNotificationMailer.send2groups("k-fujiki@future-n.co.jp").deliver_later
+    @event.transmitted_flag = true
     respond_to do |format|
-      format.html { redirect_to events_path, notice: 'メールを送信しました。' }
+      if @event.save
+        format.html { redirect_to events_path, notice: 'メールを送信しました。' }
+      else
+        format.html { redirect_to events_path, notice: 'システムエラーが発生しました。' }
+      end
     end
   end
 

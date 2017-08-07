@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20170804002814) do
     t.datetime "datetime"
     t.string "contents"
     t.integer "user_id"
+    t.boolean "transmitted_flag", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
