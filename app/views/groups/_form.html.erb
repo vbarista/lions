@@ -5,7 +5,8 @@
     <div class="panel-body">
       <div class="panel panel-primary">
         <div class="panel-body">
-          <div data-toggle="buttons-radio">
+          <% # 複数のグループを表示した際、「collection_check_boxes」で生成されたinputのIDが重複するので「data-toggle」でlabelとの連動を回避している。 %>
+          <div class="btn-group" data-toggle="buttons-radio">
             <%= f.collection_radio_buttons :type, Group.types, :first, :last do |b| %>
               <%= b.label(class:'btn btn-default radio_label') { b.radio_button(class: 'hidden') + b.text } %>
             <% end %>
@@ -19,7 +20,8 @@
       <div class="panel panel-primary">
         <div class="panel-heading">所属メンバー</div>
         <div class="panel-body">
-          <div class="btn-group" data-toggle="buttons-radio">
+          <% # 複数のグループを表示した際、「collection_check_boxes」で生成されたinputのIDが重複するので「data-toggle」でlabelとの連動を回避している。 %>
+          <div class="btn-group" data-toggle="buttons-checkbox">
             <%= f.collection_check_boxes(:user_ids, User.all, :id, :username) do |b| %>
               <%= b.label(class:'btn btn-default checkbox_label') { b.check_box(class: 'hidden') + b.text } %>
             <% end %>
