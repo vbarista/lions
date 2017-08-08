@@ -50,42 +50,51 @@
           </div>
         </div>
       </div>
-      <div class="panel panel-primary">
-        <div class="panel-heading">参加</div>
-        <div class="panel-body">
-          <div class="btn-group" data-toggle="buttons-radio">
-            <% join_users(event).each do |user_name| %>
-              <span class="btn">
-                <%= user_name.to_s %>
-              </span>
-            <% end %>
+      <% join_users = join_users(event) %>
+      <% if join_users.present? %>
+        <div class="panel panel-primary">
+          <div class="panel-heading">参加</div>
+          <div class="panel-body">
+            <div class="btn-group" data-toggle="buttons-radio">
+              <% join_users.each do |user_name| %>
+                <span class="btn">
+                  <%= user_name.to_s %>
+                </span>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="panel panel-primary">
-        <div class="panel-heading">不参加</div>
-        <div class="panel-body">
-          <div class="btn-group" data-toggle="buttons-radio">
-            <% not_join_users(event).each do |user_name| %>
-              <span class="btn">
-                <%= user_name.to_s %>
-              </span>
-            <% end %>
+      <% end %>
+      <% not_join_users = not_join_users(event) %>
+      <% if not_join_users.present? %>
+        <div class="panel panel-primary">
+          <div class="panel-heading">不参加</div>
+          <div class="panel-body">
+            <div class="btn-group" data-toggle="buttons-radio">
+              <% not_join_users.each do |user_name| %>
+                <span class="btn">
+                  <%= user_name.to_s %>
+                </span>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="panel panel-primary">
-        <div class="panel-heading">未回答</div>
-        <div class="panel-body">
-          <div class="btn-group" data-toggle="buttons-radio">
-            <% no_sign_users(event).each do |user_name| %>
-              <span class="btn">
-                <%= user_name.to_s %>
-              </span>
-            <% end %>
+      <% end %>
+      <% no_sign_users = no_sign_users(event) %>
+      <% if no_sign_users.present? %>
+        <div class="panel panel-primary">
+          <div class="panel-heading">未回答</div>
+          <div class="panel-body">
+            <div class="btn-group" data-toggle="buttons-radio">
+              <% no_sign_users.each do |user_name| %>
+                <span class="btn">
+                  <%= user_name.to_s %>
+                </span>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
       <% if event_edit?(event) %>
         <div class="form-group col-xs-10">
           <%= link_to '編集', edit_event_path(event), data: { confirm: '編集画面に遷移してよろしいですか？' }, class: "btn btn-warning btn-block" %>
