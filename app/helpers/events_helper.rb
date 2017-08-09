@@ -16,11 +16,11 @@ module EventsHelper
     groups.each do |group|
       no_sign_users.concat (
         group.users
-             .where.not(id: event.confirmations.where(onoff: 1).or(event.confirmations.where(onoff: 2))
+             .where.not(id: event.confirmations.where(onoff: 1).or(event.confirmations.where(onoff: 2)))
              .select(:username)
-             .pluck(:username))
+             .pluck(:username)
       )
     end
-    no_sign_users.map{ |user| user.username }.uniq
+    no_sign_users.uniq
   end
 end
