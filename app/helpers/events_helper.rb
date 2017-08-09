@@ -12,7 +12,7 @@ module EventsHelper
   # 未回答ユーザー
   def no_sign_users(event)
     no_sign_users = []
-    groups ||= event.groups
+    groups = event.groups
     groups.each do |group|
       no_sign_users.concat (
         group.users
@@ -21,6 +21,6 @@ module EventsHelper
              .pluck(:username))
       )
     end
-    no_sign_users.uniq
+    no_sign_users.map{ |user| user.username }.uniq
   end
 end
