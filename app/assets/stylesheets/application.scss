@@ -19,8 +19,28 @@ body {
   margin: 0;
   background:#fff url(common/lion_bg.jpg) no-repeat center center;
   background-size:cover;
-  font-size: 28px;
+  font-size: 42px;
   font-family: "Raleway","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.input-lg {
+    height: 60px;
+    padding: 14px 16px;
+    font-size: 42px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 11px;
+    margin-bottom: 5px;
+}
+
+.panel-heading {
+    padding: 5px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
 }
 
 .container {
@@ -28,33 +48,33 @@ body {
 }
 
 .navbar {
-  height: 80px;
+  height: 90px;
 }
 
 // HOMEボタン
 .navbar-brand {
-  height: 80px;
-  font-size: 32px;
+  height: 90px;
+  font-size: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .navbar-nav {
-  height: 80px;
-  font-size: 24px;
+  height: 90px;
+  font-size: 36px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .main > .container {
-  margin-top: 95px;
+  margin-top: 100px;
   height:100%;
 }
 
 .btn {
-  font-size: 28px;
+  font-size: 42px;
 }
 
 #notice {
